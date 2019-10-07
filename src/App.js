@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+
+import styles from './App.module.css';
+import Island from './common/Island';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [pulls, setPulls] = useState([]);
+
+    useEffect(() => {
+        fetch('http://10.219.150.97:8080/stash/getAllPullRequests', { mode: 'cors' })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res)
+                return res;
+            })
+            .then(setPulls)
+
+    }, []);
+
+    return (<>
+            <header className={styles.header}>Pull request gods</header>
+            <div className={styles.content}>
+                {pulls.map(({ author, date, messageContent, merged }) => {
+                    return (
+                        <Island key={`${author}-${date}`} author={author} date={date} merged={merged} msg={messageContent} />
+                    )
+                })}
+            </div>
+        </>
+    );
 }
 
 export default App;

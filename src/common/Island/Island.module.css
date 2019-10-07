@@ -1,0 +1,41 @@
+.root {
+    max-width: 600px;
+    padding: 0 15px 5px 15px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.06);
+    margin-bottom: 4px;
+}
+
+.text {
+    word-wrap: break-word;
+    font-size: 13px;
+    line-height: 20px;
+    font-family: haas, pragmatica, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #909090;
+}
+
+.title {
+    padding: 4px 0;
+}
+
+.content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255,229,100,0.2);
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.merge {
+    color: green;
+}
